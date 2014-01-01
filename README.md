@@ -13,6 +13,7 @@ Arduino----          Atmega8
   5       --------------      PB4 
   
   
-Atmega8 (analog input pins) :-  PC2, PC3, PC4, PC5 
+Atmega8 (analog input pins) :-  PC2, PC3, PC4, PC5. 
+Code can be modified to get data from PC0 and PC1 as well.
 
 Note:- ground unused adc pins to avoid noise.
