@@ -7,7 +7,7 @@ int data[40]; // used to hold data received from slave
 // tells slave that master is ready to receive data
 void init_data_receive()
 {
-  digitalWrite(statePin,HIGH); // master tells slave that it is in initialization state by drivind state pin high
+  digitalWrite(statePin,HIGH); // master tells slave that it is in initialization state by driving state pin high
   digitalWrite(masterClock,HIGH);
   delayMicroseconds(200);
   digitalWrite(masterClock,LOW);
@@ -26,9 +26,6 @@ void pulse()
 // function used to receive data from slave
 void getData(void)
 {
-  float decimalData1 = 0.0;
-  float decimalData2 = 0.0;
-  
   init_data_receive();
   
   digitalWrite(statePin,LOW); // master tells slave that it is in data receive mode
@@ -46,27 +43,6 @@ void getData(void)
       data[i] = 0;
     }
   }
-  
-  for (float i=20.0; i<30.0; i=i+1.0) // conversion from binary to decimal
-  {
-    if ((data[(int)i]) == 1)
-    {
-      decimalData1 = decimalData1 + pow(2.0,(i-20.0));
-    }
-  }
-  
-  for (float i=30.0; i<40.0; i=i+1.0)
-  {
-    if ((data[(int)i]) == 1)
-    {
-      decimalData2 = decimalData2 + pow(2.0,(i-30.0));
-    }
-  }
-  
-  Serial.print(decimalData1);
-  Serial.print("      ");
-  Serial.print(decimalData2);
-  Serial.println();
 }
     
 
@@ -87,7 +63,54 @@ void setup()
 
 void loop()
 {
-    getData();
+  float decimalData1 = 0.0;
+  float decimalData2 = 0.0;
+  float decimalData3 = 0.0;
+  float decimalData4 = 0.0;
+  
+  getData();
+    
+  for (float i=0.0; i<10.0; i=i+1.0) // conversion from binary to decimal
+  {
+    if ((data[(int)i]) == 1)
+    {
+      decimalData1 = decimalData1 + pow(2.0,i);
+    }
+  }
+  
+  for (float i=10.0; i<20.0; i=i+1.0)
+  {
+    if ((data[(int)i]) == 1)
+    {
+      decimalData2 = decimalData2 + pow(2.0,(i-10.0));
+    }
+  }
+  
+  for (float i=20.0; i<30.0; i=i+1.0)
+  {
+    if ((data[(int)i]) == 1)
+    {
+      decimalData3 = decimalData3 + pow(2.0,(i-20.0));
+    }
+  }
+  
+  for (float i=30.0; i<40.0; i=i+1.0)
+  {
+    if ((data[(int)i]) == 1)
+    {
+      decimalData4 = decimalData4 + pow(2.0,(i-30.0));
+    }
+  }
+  
+  Serial.print(decimalData1);
+  Serial.print("      ");
+  Serial.print(decimalData2);
+  Serial.print("      ");
+  Serial.print(decimalData3);
+  Serial.print("      ");
+  Serial.print(decimalData4);
+  Serial.println();
+  
 }
 
 
