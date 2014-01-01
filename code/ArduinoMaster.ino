@@ -1,4 +1,4 @@
-int statePin = 2; // used by slave to track if master is in initialization mode or data receive mode 
+int statePin = 2; //used by slave to track if master is in initialization mode or data receive mode 
 int masterClock = 4; // used to synchronize data transfer from slave to master
 int dataPin = 5; // data is transferred on this line, one bit at a time
 
