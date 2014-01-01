@@ -14,3 +14,5 @@ Arduino----          Atmega8
   
   
 Atmega8 (analog input pins) :-  PC2, PC3, PC4, PC5 
+
+Note:- ground unused adc pins to avoid noise.
