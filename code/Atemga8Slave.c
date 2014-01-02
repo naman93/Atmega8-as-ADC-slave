@@ -92,7 +92,7 @@ void sendAdcData(void)
 			
 			if (count>=0 && count<=7)
 			{
-				if (((ADCL >> count) & 0x00000001) == 0b00000001)
+				if (((ADCL >> count) & 0b00000001) == 0b00000001)
 				{
 					PORTB = 0b00010000;
 				}
@@ -107,7 +107,7 @@ void sendAdcData(void)
 			
 			if (count>7)
 			{
-				if (((ADCH >> (count-8)) & 0x00000001) == 0b00000001)
+				if (((ADCH >> (count-8)) & 0b00000001) == 0b00000001)
 				{
 					PORTB = 0b00010000;
 				}
